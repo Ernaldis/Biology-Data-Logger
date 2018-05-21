@@ -12,5 +12,4 @@ public class BioUI {
     public static void main(String[] args) {
         new InputPane();
     }
-    
 }

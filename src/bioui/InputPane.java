@@ -10,14 +10,15 @@ public class InputPane extends JFrame {
     private JPanel panel; // where the form will be
     private JTextField studentName; // the student's name
     private JTextField studentID; // the student's ID
-    private JTextField GPS; // GPS cords for the dirt
     private JTextField locationDescription; // description of where it came from
     private JTextField voltage; //the electrical output of the experiment
     private JButton submit; // for a button to submit the completed form
+    private JButton save; // save plate data
     private final int WINDOW_HEIGHT=300;
     private final int WINDOW_WIDTH=1000;
     private final int TABLE_WIDTH=12;
     private final int TABLE_HEIGHT=8;
+    JComboBox[][] grid=new JComboBox[TABLE_HEIGHT][TABLE_WIDTH]; //make an array of combo boxes with the same dimantions as the table
     
     
     
@@ -42,13 +43,18 @@ public class InputPane extends JFrame {
         //create components
         studentName = new JTextField("Student Name");
         studentID = new JTextField("Student ID");
-        GPS = new JTextField("GPS cords");
         voltage = new JTextField("Voltage");        
         locationDescription=  new JTextField("Description of location");
         submit = new JButton("Submit");
+        save = new JButton("Save");
+        
+        
         
         //add listener for the submit button
         submit.addActionListener(new submitButtonListener());
+        
+        //add listener for the save button
+        save.addActionListener(new saveButtonListener());
                 
         //create main panel
         panel = new JPanel();
@@ -64,7 +70,7 @@ public class InputPane extends JFrame {
         
         plate.setLayout(new GridLayout(TABLE_HEIGHT,TABLE_WIDTH)); //set the dimentions of the table
         plate.setBorder(BorderFactory.createTitledBorder("EcoPlate Results"));
-        JComboBox[][] grid=new JComboBox[TABLE_HEIGHT][TABLE_WIDTH]; //make an array of combo boxes with the same dimantions as the table
+        
         //loop through the table array
         for(int x=0; x<TABLE_HEIGHT; x++){
             for(int y=0; y<TABLE_WIDTH; y++){
@@ -80,15 +86,49 @@ public class InputPane extends JFrame {
         //add the components to the appropreate sub panels
         top.add(studentName);
         top.add(studentID);
-        top.add(GPS);
         top.add(locationDescription);
         top.add(voltage);
         end.add(submit);
+        end.add(save);
         
         //add the sub panels to the main panel
         panel.add(top, BorderLayout.NORTH);
         panel.add(end, BorderLayout.SOUTH);
         panel.add(plate, BorderLayout.CENTER);
+    }
+    
+    public boolean isNumber(String str){
+        try{
+            Integer.parseInt(str);
+            return true;
+        }
+        catch (NumberFormatException e){
+            try{
+                Double.parseDouble(str);
+                return true;
+            }
+            catch (NumberFormatException ex){
+                return false;
+            }
+        }
+    }
+    
+    public boolean validation(){
+        if(!(studentName.getText().equals("")||studentID.getText().equals(""))){
+            if(!(isNumber(studentName.getText())||isNumber(locationDescription.getText()))){
+                if(isNumber(studentID.getText())||isNumber(voltage.getText())){
+                    for(int x=0; x<TABLE_HEIGHT; x++){
+                        for(int y=0; y<TABLE_WIDTH; y++){
+                            if (grid[x][y].getSelectedItem()==wells[x]+", "+(y+1)){
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
     /**
@@ -99,6 +139,27 @@ public class InputPane extends JFrame {
          * The actionPreformed method executes when the submit button is clicked
          * @param e the event object
          */
+        
+        public void actionPerformed(ActionEvent e) {
+            if (!(validation())){
+                JOptionPane.showMessageDialog(null,"Error:\nplease fill all"
+                        + " requiered fields");
+            }
+            else{
+                //magic
+            }
+        }
+    }
+    
+    /**
+     * saveButtonListener is an action listener for the save button
+     */
+    private class saveButtonListener implements ActionListener{
+        /**
+         * The actionPreformed method executes when the submit button is clicked
+         * @param e the event object
+         */
+        
         public void actionPerformed(ActionEvent e){
             
         }

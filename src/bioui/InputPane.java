@@ -15,7 +15,7 @@ public class InputPane extends JFrame {
     private JTextField voltage; //the electrical output of the experiment
     private JButton submit; // for a button to submit the completed form
     private final int WINDOW_HEIGHT=300;
-    private final int WINDOW_WIDTH=400;
+    private final int WINDOW_WIDTH=1000;
     private final int TABLE_WIDTH=12;
     private final int TABLE_HEIGHT=8;
     
@@ -28,13 +28,13 @@ public class InputPane extends JFrame {
      * Constructor
      */
     public InputPane(){
-        setTitle("Experiment form");
-        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        buildPanel();
-        add(panel);
-        pack();
-        setVisible(true);
+        setTitle("Experiment form"); //title of window
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT); //set the size of the window
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set the exit behavior
+        buildPanel(); //run buildPanel()
+        add(panel); //add panel to the window
+        //pack(); 
+        setVisible(true); //make sure the window is visible
     }
 
     
@@ -50,29 +50,34 @@ public class InputPane extends JFrame {
         //add listener for the submit button
         submit.addActionListener(new submitButtonListener());
                 
-        //create panel
+        //create main panel
         panel = new JPanel();
         
-        //set layout
+        //set layout of the main panel
         panel.setLayout(new BorderLayout());
         
         //make panels for the individual sections
-        JPanel top = new JPanel();
-        JPanel plate = new JPanel();
-        JPanel end = new JPanel();
+        JPanel top = new JPanel(); //top of the window
+        JPanel plate = new JPanel(); //table of experiment data
+        JPanel end = new JPanel(); //bottom of the screen for the submit button        
         
-        plate.setLayout(new GridLayout(TABLE_HEIGHT,TABLE_WIDTH));
-        JComboBox[][] grid=new JComboBox[TABLE_HEIGHT][TABLE_WIDTH];
+        
+        plate.setLayout(new GridLayout(TABLE_HEIGHT,TABLE_WIDTH)); //set the dimentions of the table
+        plate.setBorder(BorderFactory.createTitledBorder("EcoPlate Results"));
+        JComboBox[][] grid=new JComboBox[TABLE_HEIGHT][TABLE_WIDTH]; //make an array of combo boxes with the same dimantions as the table
+        //loop through the table array
         for(int x=0; x<TABLE_HEIGHT; x++){
             for(int y=0; y<TABLE_WIDTH; y++){
                 //declare choices for the dropdown menu
-                String[] dataStates = {wells[x]+", "+(y+1), "No data", "Partial change", "Change", "No change"};
+                String[] dataStates = {wells[x]+", "+(y+1), "No data", "Negative", "Borderline", "Positive"};
+                //add the new combo box to the array
                 grid[x][y] = new JComboBox(dataStates);
+                //add the combo box to the table
                 plate.add(grid[x][y]);
             }
         }
         
-        //add the components to the sub panels
+        //add the components to the appropreate sub panels
         top.add(studentName);
         top.add(studentID);
         top.add(GPS);

@@ -2,9 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/home/timothy/NetBeansProjects/BioUI/src/bioui/BioUI.java</file>
             <file>file:/home/timothy/NetBeansProjects/BioUI/src/bioui/InputPane.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 1c17bce20cc1a856a869255f9e00a1effd05d566
     </open-files>
 </project-private>

@@ -18,6 +18,7 @@ public class Intro extends JFrame
     JButton newEntry = new JButton();       //button for new entry
     JButton addData = new JButton();        //button for adding data
     JButton exit = new JButton();           //button to exit program
+    JButton query = new JButton();          //button to access queryUI
     private final int WIN_HEIGHT = 150;
     private final int WIN_WIDTH = 300;
     
@@ -32,6 +33,7 @@ public class Intro extends JFrame
         newEntry.setText("New File");   //set text for newEntry Button
         addData.setText("Add Data to File");    //set text for addData Button
         exit.setText("Quit");           //set text for exit Button
+        query.setText("Query");         //set text for queryUI button
         
         //frame sets
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //sets exit action
@@ -43,10 +45,12 @@ public class Intro extends JFrame
         newEntry.addActionListener(new EntryListener());//see inner class
         addData.addActionListener(new AddListener());   //descriptions for 
         exit.addActionListener(new QuitListener());     //detailed information
+        query.addActionListener(new QueryListener());   
         
         //adding content
         Buttons.add(newEntry);  //adds newEntry button to Buttons panel
         Buttons.add(addData);   //adds addData button to Buttons panel
+        Buttons.add(query);     //adds queryUI button to Buttons panel
         add(Buttons, BorderLayout.CENTER);  //adds Buttons panel to frame
         add(exit, BorderLayout.SOUTH);  //adds exit button to frame
         
@@ -75,7 +79,7 @@ public class Intro extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            
+            new InputPane();
         }
     }
     
@@ -83,6 +87,19 @@ public class Intro extends JFrame
      * private inner class for addData button response
      */
     private class AddListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            
+        }
+    }
+    
+    /**
+     * private inner class for query button response. calls and opens the query
+     * prompt UI for user interaction.
+     */
+    private class QueryListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)

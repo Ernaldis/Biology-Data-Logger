@@ -35,6 +35,7 @@ public class InputPane extends JFrame {
         buildPanel(); //run buildPanel()
         add(panel); //add panel to the window
         //pack(); 
+        setLocationRelativeTo(null);    //centers window location in display
         setVisible(true); //make sure the window is visible
     }
 

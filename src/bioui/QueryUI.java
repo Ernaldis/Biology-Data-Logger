@@ -5,6 +5,7 @@ package bioui;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import org.jdatepicker.*;
 /**
  *06242018
  * @author Jacquelyn
@@ -19,5 +20,5 @@ public class QueryUI
     JLabel voltageRange = new JLabel();
     
     //fields for input to query
-    
+
 }

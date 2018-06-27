@@ -3,6 +3,7 @@ package bioui;
 /**
  *
  * @author timothy
+ * @illustrator Chris
  */
 public class BioUI {
 

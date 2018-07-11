@@ -20,11 +20,13 @@ public class QueryUI extends JFrame
     JLabel voltageRange = new JLabel("Voltage:");
     
     //fields for input to query
-    JTextField dateFrm = new JTextField("mm/dd/yy format");
-    JTextField dateTO = new JTextField("mm/dd/yy format");
+    JTextField dateFrm = new JTextField("mm/dd/yy");
+    JTextField dateTO = new JTextField("mm/dd/yy");
     JTextField studID = new JTextField(10);
-    JList loc = new JList();
-    JTextField voltage = new JTextField("xx.xxx format", 6);
+    String[] locate = {"N/A","1", "2", "3"};
+    JComboBox loc = new JComboBox(locate);
+    JTextField voltage = new JTextField("xx.xxx", 6);
+    
     
     //buttons for submit and quit
     JButton submit = new JButton("Submit");
@@ -38,8 +40,8 @@ public class QueryUI extends JFrame
     JPanel sub = new JPanel();
     
     //set dimensions for size of frame
-    final private int win_WIDTH = 250;
-    final private int win_HEIGHT = 250;
+    final private int win_WIDTH = 450;
+    final private int win_HEIGHT = 200;
     
     public QueryUI()
     {

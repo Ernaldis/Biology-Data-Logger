@@ -8,18 +8,19 @@ import java.awt.event.*;
  */
 public class InputPane extends JFrame {
     private JPanel panel; // where the form will be
-    private JTextField studentName; // the student's name
+    private JTextField studentFirstName; // the student's first name
+    private JTextField studentLastName; // the student's last name
     private JTextField studentID; // the student's ID
     private JTextField locationDescription; // description of where it came from
     private JTextField voltage; //the electrical output of the experiment
     private JButton submit; // for a button to submit the completed form
-    private JButton save; // save plate data
+    private JButton Return; // save plate data
     private final int WINDOW_HEIGHT=300;
     private final int WINDOW_WIDTH=1000;
     private final int TABLE_WIDTH=12;
     private final int TABLE_HEIGHT=8;
     JComboBox[][] grid=new JComboBox[TABLE_HEIGHT][TABLE_WIDTH]; //make an array of combo boxes with the same dimantions as the table
-    
+    int[][] arryData = new int[TABLE_HEIGHT][TABLE_WIDTH];
     
     
     //Letters to denote wells
@@ -42,12 +43,13 @@ public class InputPane extends JFrame {
     
     private void buildPanel() {
         //create components
-        studentName = new JTextField("Student Name");
+        studentFirstName = new JTextField("First Name");
+        studentLastName = new JTextField("Chandler Name");
         studentID = new JTextField("Student ID");
-        voltage = new JTextField("Voltage");        
-        locationDescription=  new JTextField("Description of location");
+        voltage = new JTextField("Voltage");
+        locationDescription=  new JTextField("Location");
         submit = new JButton("Submit");
-        save = new JButton("Save");
+        Return = new JButton("Save");
         
         
         
@@ -55,7 +57,7 @@ public class InputPane extends JFrame {
         submit.addActionListener(new submitButtonListener());
         
         //add listener for the save button
-        save.addActionListener(new saveButtonListener());
+        Return.addActionListener(new returnButtonListener());
                 
         //create main panel
         panel = new JPanel();
@@ -85,12 +87,13 @@ public class InputPane extends JFrame {
         }
         
         //add the components to the appropreate sub panels
-        top.add(studentName);
+        top.add(studentFirstName);
+        top.add(studentLastName);
         top.add(studentID);
         top.add(locationDescription);
         top.add(voltage);
         end.add(submit);
-        end.add(save);
+        end.add(Return);
         
         //add the sub panels to the main panel
         panel.add(top, BorderLayout.NORTH);
@@ -115,8 +118,10 @@ public class InputPane extends JFrame {
     }
     
     public boolean validation(){
-        if(!(studentName.getText().equals("")||studentID.getText().equals(""))){
-            if(!(isNumber(studentName.getText())||isNumber(locationDescription.getText()))){
+        if(!(studentFirstName.getText().equals("")||studentID.getText().equals("")
+                ||studentFirstName.getText().equals(""))){
+            if(!(isNumber(studentFirstName.getText())||isNumber(locationDescription.getText()))
+                    ||isNumber(studentLastName.getText())){
                 if(isNumber(studentID.getText())||isNumber(voltage.getText())){
                     for(int x=0; x<TABLE_HEIGHT; x++){
                         for(int y=0; y<TABLE_WIDTH; y++){
@@ -146,8 +151,23 @@ public class InputPane extends JFrame {
                 JOptionPane.showMessageDialog(null,"Error:\nplease fill all"
                         + " requiered fields");
             }
-            else{
-                //magic
+            else {
+                for(int x=0; x<TABLE_HEIGHT; x++){
+                    for(int y=0; y<TABLE_WIDTH; y++){
+                        if (grid[x][y].getSelectedItem()=="No data"){
+                            arryData[x][y]=-1;
+                        }
+                        else if (grid[x][y].getSelectedItem()=="Negative"){
+                            arryData[x][y]=0;
+                        }
+                        else if (grid[x][y].getSelectedItem()=="Borderline"){
+                            arryData[x][y]=1;
+                        }
+                        else if (grid[x][y].getSelectedItem()=="Positive"){
+                            arryData[x][y]=2;
+                        }
+                    }
+                }
             }
         }
     }
@@ -155,7 +175,7 @@ public class InputPane extends JFrame {
     /**
      * saveButtonListener is an action listener for the save button
      */
-    private class saveButtonListener implements ActionListener{
+    private class returnButtonListener implements ActionListener{
         /**
          * The actionPreformed method executes when the submit button is clicked
          * @param e the event object

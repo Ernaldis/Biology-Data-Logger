@@ -1,7 +1,9 @@
 package bioui;
 import java.sql.*;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.PreparedStatement;
 /**
  *
  * @author timothy
@@ -13,10 +15,14 @@ public class DBConnect {
     
     final private String databaseLocation="jdbc:mysql://localhost:3306/BioDB";
     
+    Statement statement;
+    
     /**
      * Constructor
+     * @throws java.sql.SQLException
      */
-    public DBConnect(){
+    public DBConnect() throws SQLException{
+        this.statement = conn.createStatement();
         
     }
     

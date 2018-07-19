@@ -49,7 +49,7 @@ public class InputPane extends JFrame {
         voltage = new JTextField("Voltage");
         locationDescription=  new JTextField("Location");
         submit = new JButton("Submit");
-        Return = new JButton("Save");
+        Return = new JButton("Return");
         
         
         

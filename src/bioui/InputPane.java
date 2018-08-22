@@ -10,7 +10,7 @@ public class InputPane extends JFrame {
     private JPanel panel; // where the form will be
     private JTextField studentFirstName; // the student's first name
     private JTextField studentLastName; // the student's last name
-    private JTextField studentID; // the student's ID
+    private JTextField student_user; // the student's unique username
     private JTextField locationDescription; // description of where it came from
     private JTextField voltage; //the electrical output of the experiment
     private JButton submit; // for a button to submit the completed form
@@ -45,7 +45,11 @@ public class InputPane extends JFrame {
         //create components
         studentFirstName = new JTextField("First Name");
         studentLastName = new JTextField("Last Name");
+<<<<<<< HEAD
         studentID = new JTextField("Student ID");
+=======
+        student_user = new JTextField("LoneStar Username");
+>>>>>>> 6fd7d3bd2f37acd485250470f4ef4d91a1ee30cd
         voltage = new JTextField("Voltage");
         locationDescription=  new JTextField("Location");
         submit = new JButton("Submit");
@@ -89,7 +93,7 @@ public class InputPane extends JFrame {
         //add the components to the appropreate sub panels
         top.add(studentFirstName);
         top.add(studentLastName);
-        top.add(studentID);
+        top.add(student_user);
         top.add(locationDescription);
         top.add(voltage);
         end.add(submit);
@@ -114,15 +118,15 @@ public class InputPane extends JFrame {
             catch (NumberFormatException ex){
                 return false;
             }
-        }
+        } 
     }
     
     public boolean validation(){
-        if(!(studentFirstName.getText().equals("")||studentID.getText().equals("")
+        if(!(studentFirstName.getText().equals("")||student_user.getText().equals("")
                 ||studentFirstName.getText().equals(""))){
             if(!(isNumber(studentFirstName.getText())||isNumber(locationDescription.getText()))
                     ||isNumber(studentLastName.getText())){
-                if(isNumber(studentID.getText())||isNumber(voltage.getText())){
+                if(isNumber(student_user.getText())||isNumber(voltage.getText())){
                     for(int x=0; x<TABLE_HEIGHT; x++){
                         for(int y=0; y<TABLE_WIDTH; y++){
                             if (grid[x][y].getSelectedItem()==wells[x]+", "+(y+1)){

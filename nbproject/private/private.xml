@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/timothy/NetBeansProjects/BioUI/src/bioui/BioUI.java</file>
             <file>file:/home/timothy/NetBeansProjects/BioUI/src/bioui/InputPane.java</file>
             <file>file:/home/timothy/NetBeansProjects/BioUI/src/bioui/Intro.java</file>
             <file>file:/home/timothy/NetBeansProjects/BioUI/src/bioui/DBConnect.java</file>
             <file>file:/home/timothy/NetBeansProjects/BioUI/src/bioui/QueryUI.java</file>
+=======
+            <file>file:/C:/Users/Jacquelyn/Desktop/Biolog%20Project/src/bioui/QueryUI.java</file>
+            <file>file:/C:/Users/Jacquelyn/Desktop/Biolog%20Project/src/bioui/InputPane.java</file>
+            <file>file:/C:/Users/Jacquelyn/Desktop/Biolog%20Project/src/bioui/Intro.java</file>
+>>>>>>> 6fd7d3bd2f37acd485250470f4ef4d91a1ee30cd
         </group>
     </open-files>
 </project-private>

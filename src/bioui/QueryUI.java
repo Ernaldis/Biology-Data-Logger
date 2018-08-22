@@ -1,11 +1,11 @@
-/**
+ /**
  * This class will allow the user to make queries of the data stored in SQL
  */
 package bioui;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import org.jdatepicker.*;
+//import org.jdatepicker.*;
 /**
  *06242018
  * @author Jacquelyn
@@ -19,13 +19,17 @@ public class QueryUI extends JFrame
     JLabel location = new JLabel("Location:");
     JLabel voltageRange = new JLabel("Voltage:");
     
-    //fields for input to query
-    JTextField dateFrm = new JTextField("mm/dd/yy");
-    JTextField dateTO = new JTextField("mm/dd/yy");
-    JTextField studID = new JTextField(10);
+    //strins to populate combo boxes
     String[] locate = {"N/A","1", "2", "3"};
+    String[] session = {"Spring 2018", "Fall 2018", "Spring 2019", "*"};
+    String[] voltRead = {"0.000", "0.125", "0.5", "*"};
+    
+    //fields for input to query
+    JComboBox dateFrm = new JComboBox(session);
+    JComboBox dateTO = new JComboBox(session);
+    JTextField studID = new JTextField(10);
     JComboBox loc = new JComboBox(locate);
-    JTextField voltage = new JTextField("xx.xxx", 6);
+    JComboBox voltage = new JComboBox(voltRead);
     
     
     //buttons for submit and quit

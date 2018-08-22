@@ -1,4 +1,4 @@
-/**
+ /**
  * This class is the intro GUI for the BioUI project. It allows the user to 
  * select what action they wish to either add data in a new file or modify data
  * in an existing file.

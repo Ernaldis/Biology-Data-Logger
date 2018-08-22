@@ -44,7 +44,7 @@ public class InputPane extends JFrame {
     private void buildPanel() {
         //create components
         studentFirstName = new JTextField("First Name");
-        studentLastName = new JTextField("Chandler Name");
+        studentLastName = new JTextField("Last Name");
         studentID = new JTextField("Student ID");
         voltage = new JTextField("Voltage");
         locationDescription=  new JTextField("Location");
@@ -182,7 +182,7 @@ public class InputPane extends JFrame {
          */
         
         public void actionPerformed(ActionEvent e){
-            
+            new Intro();
         }
     }
 }

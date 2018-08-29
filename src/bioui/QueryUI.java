@@ -47,6 +47,9 @@ public class QueryUI extends JFrame
     final private int win_WIDTH = 450;
     final private int win_HEIGHT = 200;
     
+    /*
+    constructor
+    */
     public QueryUI()
     {
         //assign layout manager and set frame size

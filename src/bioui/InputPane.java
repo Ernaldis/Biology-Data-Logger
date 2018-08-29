@@ -45,11 +45,7 @@ public class InputPane extends JFrame {
         //create components
         studentFirstName = new JTextField("First Name");
         studentLastName = new JTextField("Last Name");
-<<<<<<< HEAD
-        studentID = new JTextField("Student ID");
-=======
         student_user = new JTextField("LoneStar Username");
->>>>>>> 6fd7d3bd2f37acd485250470f4ef4d91a1ee30cd
         voltage = new JTextField("Voltage");
         locationDescription=  new JTextField("Location");
         submit = new JButton("Submit");

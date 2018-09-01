@@ -104,7 +104,7 @@ public class Intro extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            new QueUI();
+            new QueryUI();
         }
     }
 }

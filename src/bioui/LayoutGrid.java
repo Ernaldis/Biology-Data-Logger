@@ -65,7 +65,11 @@ public class LayoutGrid extends JFrame
         public void actionPerformed(ActionEvent e)
             {
                 Font font = new Font("Serif", Font.BOLD, 20);
-                button[x][y].setFont(font);
+                if(e.getSource() instanceof JButton){
+                    ((JButton)e.getSource()).setFont(font);
+                    //create secondary boolean array called clicked to hold boolean values
+                    //for the buttons being clicked or not
+                }
             }
     }
     

@@ -76,10 +76,9 @@ public class QueUI extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            //Letters to denote wells
-            String[] wells = {"A", "B", "C", "D", "E", "F", "G", "H"};
-            
+           new LayoutGrid(); 
         }
+        
     }
     
     /*

@@ -146,6 +146,7 @@ public class InputPane extends JFrame {
          * @param e the event object
          */
         
+        @Override
         public void actionPerformed(ActionEvent e) {
             if (!(validation())){
                 JOptionPane.showMessageDialog(null,"Error:\nplease fill all"
@@ -181,8 +182,9 @@ public class InputPane extends JFrame {
          * @param e the event object
          */
         
+        @Override
         public void actionPerformed(ActionEvent e){
-            new Intro();
+            Intro intro = new Intro();
         }
     }
 }

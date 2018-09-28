@@ -37,7 +37,7 @@ public class DBConnect {
             conn=DriverManager.getConnection(databaseLocation);
             System.out.println("Connection established");
         }
-        catch(Exception e){
+        catch(ClassNotFoundException | SQLException e){
             System.out.println("Error: You are an idiot because:\n"+e.getMessage());
         }
     }
@@ -58,25 +58,23 @@ public class DBConnect {
         
         //Open the file
         File file = new File(fileName);
-        Scanner inputFile = new Scanner(file);
-        
+        int ID;
         //Read the number
-        String line = inputFile.nextLine();
-        
-        //Parse number into ID integer
-        int ID = Integer.parseInt(line);
-        
-        //Close the file
-        inputFile.close();
-        
-        //Open the file
-        PrintWriter outputFile = new PrintWriter(fileName);
+        try (Scanner inputFile = new Scanner(file)) {
+            //Read the number
+            String line = inputFile.nextLine();
+            //Parse number into ID integer
+            ID = Integer.parseInt(line);
+            //Close the file
+        }
         
         //Replace number in DO_NOT_TOUCH.txt with the next integer
-        outputFile.print(ID+1);
-        
-        //Close the file
-        outputFile.close();
+        try ( //Open the file
+                PrintWriter outputFile = new PrintWriter(fileName)) {
+            //Replace number in DO_NOT_TOUCH.txt with the next integer
+            outputFile.print(ID+1);
+            //Close the file
+        }
         
         //Output the ID number
         return ID;

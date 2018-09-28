@@ -3,10 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/timothy/Projects/BioUI/src/bioui/InputPane.java</file>
             <file>file:/home/timothy/Projects/BioUI/src/bioui/LayoutGrid.java</file>
             <file>file:/home/timothy/Projects/BioUI/src/bioui/DBConnect.java</file>
             <file>file:/home/timothy/Projects/BioUI/src/bioui/QueUI.java</file>
+=======
+            <file>file:/C:/Users/Jacquelyn/Desktop/Biolog%20Project/src/bioui/QueryUI.java</file>
+            <file>file:/C:/Users/Jacquelyn/Desktop/Biolog%20Project/src/bioui/InputPane.java</file>
+            <file>file:/C:/Users/Jacquelyn/Desktop/Biolog%20Project/src/bioui/LayoutGrid.java</file>
+            <file>file:/C:/Users/Jacquelyn/Desktop/Biolog%20Project/src/bioui/Intro.java</file>
+            <file>file:/C:/Users/Jacquelyn/Desktop/Biolog%20Project/src/bioui/QueUI.java</file>
+>>>>>>> fe87cea7553fe198a11c464198935d347d48994d
         </group>
     </open-files>
 </project-private>

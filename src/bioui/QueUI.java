@@ -15,11 +15,17 @@ public class QueUI extends JFrame
 {
     //create frame, pane and buttons
     JFrame Que = new JFrame();
-    JPanel queryBox = new JPanel(new GridLayout(4,2));
+    JPanel queryBox = new JPanel(new GridLayout(3,2)); 
     JButton stuName = new JButton("Student Name");
     JButton semes = new JButton("Semester");
-    JButton dates = new JButton("Dates");
+    //JButton dates = new JButton("Dates"); //increment grid layout by 1 when ready to use this function
     JButton cells = new JButton("Well Data");
+    
+    //create labels to explain button function
+    JLabel student = new JLabel("LSC Username");
+    JLabel semester = new JLabel("Choose a semester");
+    JLabel cell = new JLabel("Click to select specific well data");
+    //JLabel date = new JLabel("Click to select date range");
     
     //set dimensions for size of frame
     final private int win_WIDTH = 450;
@@ -35,11 +41,24 @@ public class QueUI extends JFrame
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //add buttons to the grid
-        queryBox.add(stuName);
-        queryBox.add(semes);
-        queryBox.add(dates);
-        queryBox.add(cells);
+        //add listeners to the buttons
+        cells.addActionListener(new CellsListener());
+        stuName.addActionListener(new StudentListener());
+        semes.addActionListener(new SemesterListener());
+        
+        //add buttons and labels to the grid
+        queryBox.add(stuName);  //JButton
+        queryBox.add(student);  //JLabel
+        queryBox.add(semes);    //JButton
+        queryBox.add(semester); //JLabel
+        //queryBox.add(dates);  //for use later
+        //queryBox.add(date);   //for use later
+        queryBox.add(cells);    //JButton
+        queryBox.add(cell);     //JLabel
+        
+        
+        
+        
         
         //add pane to the frame
         add(queryBox);
@@ -49,5 +68,38 @@ public class QueUI extends JFrame
         setLocationRelativeTo(null);
     }
     
+    /*
+    private inner class for cellsListener implements ActionListener.
+    */
+    private class CellsListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+           new LayoutGrid(); 
+        }
+        
+    }
     
+    /*
+    private inner class for semester button implements ActionListener
+    */
+    private class SemesterListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            
+        }
+    }
+    
+    /*
+    private inner class for student button implements ActionListener
+    */
+    private class StudentListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            
+        }
+    }
 }

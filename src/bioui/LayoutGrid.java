@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  *
  * @author Jacquelyn
  */
-public class LayoutGrid extends JFrame 
+public final class LayoutGrid extends JFrame 
 {
         public JPanel box;
         public JButton[][] button = new JButton[8][12];//Labels to nest checkboxes in

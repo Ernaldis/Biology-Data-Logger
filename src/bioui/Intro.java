@@ -79,7 +79,7 @@ public class Intro extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            new InputPane();
+            InputPane inputPane = new InputPane();
         }
     }
     
@@ -104,7 +104,7 @@ public class Intro extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            new QueUI();
+            QueUI queUI = new QueUI();
         }
     }
 }

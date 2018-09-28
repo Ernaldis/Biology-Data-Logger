@@ -35,7 +35,7 @@ public class DBConnect {
             conn=DriverManager.getConnection(databaseLocation);
             System.out.println("Connection established");
         }
-        catch(Exception e){
+        catch(ClassNotFoundException | SQLException e){
             System.out.println("Error: You are an idiot because:\n"+e.getMessage());
         }
     }

@@ -76,7 +76,7 @@ public class QueUI extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
-           new LayoutGrid(); 
+            LayoutGrid layoutGrid = new LayoutGrid(); 
         }
         
     }
@@ -86,6 +86,7 @@ public class QueUI extends JFrame
     */
     private class SemesterListener implements ActionListener
     {
+        @Override
         public void actionPerformed(ActionEvent e)
         {
             
@@ -97,6 +98,7 @@ public class QueUI extends JFrame
     */
     private class StudentListener implements ActionListener
     {
+        @Override
         public void actionPerformed(ActionEvent e)
         {
             

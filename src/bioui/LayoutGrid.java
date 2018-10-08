@@ -17,14 +17,17 @@ import java.awt.event.ActionListener;
  */
 public final class LayoutGrid extends JFrame 
 {
-        public JPanel box;
-        public JButton[][] button = new JButton[8][12];//Labels to nest checkboxes in
-        public final int TABLE_HEIGHT = 8;
-        public final int TABLE_WIDTH = 12;
-        public final int WIN_HEIGHT = 300;
-        public final int WIN_WIDTH = 1000;
+        private JPanel box;
+        private final int TABLE_HEIGHT = 8;
+        private final int TABLE_WIDTH = 12;
+        private final int WIN_HEIGHT = 300;
+        private final int WIN_WIDTH = 1000;
         //Letters to denote wells
-        public String[] wells = {"A", "B", "C", "D", "E", "F", "G", "H"};
+        private final String[] wells = {"A", "B", "C", "D", "E", "F", "G", "H"};
+        //Labels to nest checkboxes in
+        private final JButton[][] buttonArry = new JButton[TABLE_HEIGHT][TABLE_WIDTH];
+        //Boolean array to denote if a button is clicked or not
+        private final boolean[][] clicked = new boolean[TABLE_HEIGHT][TABLE_WIDTH];
 /**
  * constructor
  */ 
@@ -52,26 +55,22 @@ public final class LayoutGrid extends JFrame
             {
                 for(int y=0; y<TABLE_WIDTH; y++)
                 {
-                    button[x][y] = new JButton(wells[x]+", "+(y+1));
-                    button[x][y].addActionListener(new ButtonListener());
-                    box.add(button[x][y]);                   
+                    buttonArry[x][y] = new JButton(wells[x]+", "+(y+1));
+                    buttonArry[x][y].addActionListener((ActionEvent e) -> {
+                        Font bold = new Font("Serif", Font.BOLD, 20);
+                        Font normal = new Font("SansSerif", Font.BOLD, 12);
+                        JButton button = (JButton) e.getSource();
+
+                        if(!button.getFont().equals(bold)){
+                            button.setFont(bold);
+                            //toggle value in clicked[][]
+                        } else {
+                            button.setFont(normal);
+                        }
+                    });
+                    box.add(buttonArry[x][y]);                   
                 }
             }
     }
 
-    private class ButtonListener implements ActionListener 
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-            {
-                Font font = new Font("Serif", Font.BOLD, 20);
-                if(e.getSource() instanceof JButton){
-                    ((JButton)e.getSource()).setFont(font);
-                    //create secondary boolean array called clicked to hold boolean values
-                    //for the buttons being clicked or not
-                }
-            }
-    }
-    
-    
 }

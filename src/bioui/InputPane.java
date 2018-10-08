@@ -54,10 +54,35 @@ public class InputPane extends JFrame {
         
         
         //add listener for the submit button
-        submit.addActionListener(new submitButtonListener());
+        submit.addActionListener((ActionEvent e) -> {
+            if (!(validation())){
+                JOptionPane.showMessageDialog(null,"Error:\nplease fill all"
+                        + " requiered fields");
+            }
+            else {
+                for(int x=0; x<TABLE_HEIGHT; x++){
+                    for(int y=0; y<TABLE_WIDTH; y++){
+                        if (grid[x][y].getSelectedItem()=="No data"){
+                            arryData[x][y]=-1;
+                        }
+                        else if (grid[x][y].getSelectedItem()=="Negative"){
+                            arryData[x][y]=0;
+                        }
+                        else if (grid[x][y].getSelectedItem()=="Borderline"){
+                            arryData[x][y]=1;
+                        }
+                        else if (grid[x][y].getSelectedItem()=="Positive"){
+                            arryData[x][y]=2;
+                        }
+                    }
+                }
+            }
+        });
         
         //add listener for the save button
-        Return.addActionListener(new returnButtonListener());
+        Return.addActionListener((ActionEvent e) -> {
+            Intro intro = new Intro();
+        });
                 
         //create main panel
         panel = new JPanel();
@@ -118,73 +143,12 @@ public class InputPane extends JFrame {
     }
     
     public boolean validation(){
-        if(!(studentFirstName.getText().equals("")||student_user.getText().equals("")
-                ||studentFirstName.getText().equals(""))){
-            if(!(isNumber(studentFirstName.getText())||isNumber(locationDescription.getText()))
-                    ||isNumber(studentLastName.getText())){
-                if(isNumber(student_user.getText())||isNumber(voltage.getText())){
-                    for(int x=0; x<TABLE_HEIGHT; x++){
-                        for(int y=0; y<TABLE_WIDTH; y++){
-                            if (grid[x][y].getSelectedItem()==wells[x]+", "+(y+1)){
-                                return false;
-                            }
-                        }
-                    }
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    
-    /**
-     * submitButtonListener is an action listener for the submit button
-     */
-    private class submitButtonListener implements ActionListener{
-        /**
-         * The actionPreformed method executes when the submit button is clicked
-         * @param e the event object
-         */
-        
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (!(validation())){
-                JOptionPane.showMessageDialog(null,"Error:\nplease fill all"
-                        + " requiered fields");
-            }
-            else {
-                for(int x=0; x<TABLE_HEIGHT; x++){
-                    for(int y=0; y<TABLE_WIDTH; y++){
-                        if (grid[x][y].getSelectedItem()=="No data"){
-                            arryData[x][y]=-1;
-                        }
-                        else if (grid[x][y].getSelectedItem()=="Negative"){
-                            arryData[x][y]=0;
-                        }
-                        else if (grid[x][y].getSelectedItem()=="Borderline"){
-                            arryData[x][y]=1;
-                        }
-                        else if (grid[x][y].getSelectedItem()=="Positive"){
-                            arryData[x][y]=2;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    /**
-     * saveButtonListener is an action listener for the save button
-     */
-    private class returnButtonListener implements ActionListener{
-        /**
-         * The actionPreformed method executes when the submit button is clicked
-         * @param e the event object
-         */
-        
-        @Override
-        public void actionPerformed(ActionEvent e){
-            Intro intro = new Intro();
-        }
+        String first = (String) studentFirstName.getText();
+        String last = (String) studentLastName.getText();
+        String userName = (String) student_user.getText();
+        String location = (String) locationDescription.getText();
+        return(!(first.equals("First Name")||userName.equals("LoneStar Username")||last.equals("Last Name"))
+                &&!(isNumber(first)||isNumber(location))||isNumber(last)||isNumber(userName)
+                &&(isNumber(voltage.getText())));
     }
 }

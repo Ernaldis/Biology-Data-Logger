@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  *
@@ -41,7 +40,6 @@ public final class LayoutGrid extends JFrame
             
             add(box);
             setLocationRelativeTo(null);
-            //pack();
             setVisible(true);
         }
     
@@ -50,27 +48,25 @@ public final class LayoutGrid extends JFrame
         box = new JPanel(new GridLayout(TABLE_HEIGHT,TABLE_WIDTH));
         box.setBorder(BorderFactory.createTitledBorder("Select Buttons to compare well Data"));
         
-    //loop through the table array
-            for(int x=0; x<TABLE_HEIGHT; x++)
+        //loop through the table array
+        for(int x=0; x<TABLE_HEIGHT; x++)
+        {
+            for(int y=0; y<TABLE_WIDTH; y++)
             {
-                for(int y=0; y<TABLE_WIDTH; y++)
-                {
-                    buttonArry[x][y] = new JButton(wells[x]+", "+(y+1));
-                    buttonArry[x][y].addActionListener((ActionEvent e) -> {
-                        Font bold = new Font("Serif", Font.BOLD, 20);
-                        Font normal = new Font("SansSerif", Font.BOLD, 12);
-                        JButton button = (JButton) e.getSource();
-
-                        if(!button.getFont().equals(bold)){
-                            button.setFont(bold);
-                            //toggle value in clicked[][]
-                        } else {
-                            button.setFont(normal);
-                        }
-                    });
-                    box.add(buttonArry[x][y]);                   
-                }
+                buttonArry[x][y] = new JButton(wells[x]+", "+(y+1));
+                buttonArry[x][y].addActionListener((ActionEvent e) -> {
+                    Font bold = new Font("Serif", Font.BOLD, 20);
+                    Font normal = new Font("SansSerif", Font.BOLD, 12);
+                    JButton button = (JButton) e.getSource();
+                    if(!button.getFont().equals(bold)){
+                        button.setFont(bold);
+                        //toggle value in clicked[][]
+                    } else {
+                        button.setFont(normal);
+                    }
+                });
+                box.add(buttonArry[x][y]);                   
             }
+        }
     }
-
 }

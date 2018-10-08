@@ -42,9 +42,15 @@ public class QueUI extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //add listeners to the buttons
-        cells.addActionListener(new CellsListener());
-        stuName.addActionListener(new StudentListener());
-        semes.addActionListener(new SemesterListener());
+        cells.addActionListener((ActionEvent e) -> {
+            LayoutGrid layoutGrid = new LayoutGrid();
+        });
+        stuName.addActionListener((ActionEvent e) -> {
+            
+        });
+        semes.addActionListener((ActionEvent e) -> {
+            
+        });
         
         //add buttons and labels to the grid
         queryBox.add(stuName);  //JButton
@@ -56,52 +62,11 @@ public class QueUI extends JFrame
         queryBox.add(cells);    //JButton
         queryBox.add(cell);     //JLabel
         
-        
-        
-        
-        
         //add pane to the frame
         add(queryBox);
         
         //make it show up
         setVisible(true);
         setLocationRelativeTo(null);
-    }
-    
-    /*
-    private inner class for cellsListener implements ActionListener.
-    */
-    private class CellsListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            LayoutGrid layoutGrid = new LayoutGrid(); 
-        }
-        
-    }
-    
-    /*
-    private inner class for semester button implements ActionListener
-    */
-    private class SemesterListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            
-        }
-    }
-    
-    /*
-    private inner class for student button implements ActionListener
-    */
-    private class StudentListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            
-        }
     }
 }

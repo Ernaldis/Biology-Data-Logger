@@ -42,10 +42,18 @@ public class Intro extends JFrame
         setLayout(new BorderLayout());  //sets layout for frame
         
         //button event handling
-        newEntry.addActionListener(new EntryListener());//see inner class
-        addData.addActionListener(new AddListener());   //descriptions for 
-        exit.addActionListener(new QuitListener());     //detailed information
-        query.addActionListener(new QueryListener());   
+        newEntry.addActionListener((ActionEvent e) -> {
+            InputPane inputPane = new InputPane();
+        });
+        addData.addActionListener((ActionEvent e) -> {
+            //submit button code
+        });
+        exit.addActionListener((ActionEvent) -> {
+            System.exit(0);
+        });
+        query.addActionListener((ActionEvent e) -> {
+            QueUI queUI = new QueUI();
+        });   
         
         //adding content
         Buttons.add(newEntry);  //adds newEntry button to Buttons panel
@@ -56,55 +64,5 @@ public class Intro extends JFrame
         
         setLocationRelativeTo(null);
         setVisible(true);   //sets frame to visible for interaction by user
-        
-    }
-    
-    /**
-     * private inner class for exit button listener
-     */
-    private class QuitListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            System.exit(0);
-        }
-    }
-    
-    /**
-     * private inner class for newEntry button response
-     */
-    private class EntryListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            InputPane inputPane = new InputPane();
-        }
-    }
-    
-    /**
-     * private inner class for addData button response
-     */
-    private class AddListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            
-        }
-    }
-    
-    /**
-     * private inner class for query button response. calls and opens the query
-     * prompt UI for user interaction.
-     */
-    private class QueryListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            QueUI queUI = new QueUI();
-        }
-    }
+    }   
 }

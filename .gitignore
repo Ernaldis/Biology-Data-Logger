@@ -32,3 +32,6 @@ nbdist/
 
 build.xml
 manifest.mf
+.idea/
+BioUI.iml
+out/

@@ -14,14 +14,12 @@ import java.awt.event.ActionEvent;
  *
  * @author Jacquelyn
  */
-public final class LayoutGrid extends JFrame 
+final class LayoutGrid extends JFrame
 {
         private JPanel box;
         private final int TABLE_HEIGHT = 8;
         private final int TABLE_WIDTH = 12;
-        private final int WIN_HEIGHT = 300;
-        private final int WIN_WIDTH = 1000;
-        //Letters to denote wells
+    //Letters to denote wells
         private final String[] wells = {"A", "B", "C", "D", "E", "F", "G", "H"};
         //Labels to nest checkboxes in
         private final JButton[][] buttonArry = new JButton[TABLE_HEIGHT][TABLE_WIDTH];
@@ -29,11 +27,13 @@ public final class LayoutGrid extends JFrame
         private final boolean[][] clicked = new boolean[TABLE_HEIGHT][TABLE_WIDTH];
 /**
  * constructor
- */ 
-    public LayoutGrid() 
+ */
+LayoutGrid()
         {
             setTitle("Well selection");
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            int WIN_HEIGHT = 300;
+            int WIN_WIDTH = 1000;
             setSize(WIN_WIDTH, WIN_HEIGHT);
             
             buildPanel();
@@ -43,7 +43,7 @@ public final class LayoutGrid extends JFrame
             setVisible(true);
         }
     
-    public void buildPanel()
+    private void buildPanel()
     {
         box = new JPanel(new GridLayout(TABLE_HEIGHT,TABLE_WIDTH));
         box.setBorder(BorderFactory.createTitledBorder("Select Buttons to compare well Data"));

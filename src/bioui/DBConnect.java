@@ -1,11 +1,9 @@
 package bioui;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.sql.*;
-import java.sql.Statement;
-import java.io.*;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.sql.PreparedStatement;
 /**
  *
  * @author timothy
@@ -14,17 +12,13 @@ public class DBConnect {
     private Connection conn;
     private Statement stat;
     private ResultSet res;
-    
-    final private String databaseLocation="jdbc:mysql://localhost:3306/BioDB";
-    
-    Statement statement;
-    
+
     /**
      * Constructor
      * @throws java.sql.SQLException
      */
     public DBConnect() throws SQLException{
-        this.statement = conn.createStatement();
+        Statement statement = conn.createStatement();
         
     }
     
@@ -34,6 +28,7 @@ public class DBConnect {
     public void openConnection(){
         try{
             Class.forName("com.mysql.jbdc.Driver");
+            String databaseLocation = "jdbc:mysql://localhost:3306/BioDB";
             conn=DriverManager.getConnection(databaseLocation);
             System.out.println("Connection established");
         }
@@ -41,22 +36,18 @@ public class DBConnect {
             System.out.println("Error: You are an idiot because:\n"+e.getMessage());
         }
     }
-    
-    final String fileName = "DO_NOT_TOUCH.txt";
-    
+
     /**
      * Make a unique transaction number for each form filled.
      * Read the number from DO_NOT_TOUCH.txt & return it. 
      * Replace the number in the file with the next integer. 
-     * @return 
-     * @throws java.io.FileNotFoundException
+     * @return The transaction ID number
+     * @throws java.io.FileNotFoundException someone removed the ID file
      */
     public int id() throws FileNotFoundException{
-        
-        //Create a scanner object for koyboard input
-        Scanner keyboard = new Scanner(System.in);
-        
+
         //Open the file
+        String fileName = "DO_NOT_TOUCH.txt";
         File file = new File(fileName);
         int ID;
         //Read the number

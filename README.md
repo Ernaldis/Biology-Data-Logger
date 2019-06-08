@@ -12,18 +12,24 @@ They do this with [Eco-Plate](https://biolog.com/products-portfolio-overview/mic
 We have several goals for this project:
 <details>
 	<summary>Gather experiment data</summary>
-	* Student Name
-	* Voltage Output
-	* Eco-plate Results
+	<ul>
+		<li> Student Name </li>
+		<li> Voltage Output </li>
+		<li> Eco-plate Results </li>
+	</ul>
 </details>
 <details>
 	<summary>Store the data</summary>
-	* Log the results of the experiment to a database
-	* We intent to use an SQL database for this project
+	<ul>
+		<li> Log the results of the experiment to a database </li>
+		<li> We intent to use an SQL database for this project </li>
+	</ul>
 </details>
 <details>
 	<summary>Interpret Results</summary>
-	* Allow users to query previous experiments
-	* Give users tools to analyze the results
-	* Provide a calculated ideal Ecoplate for maximum voltage output
+	<ul>
+		<li> Allow users to query previous experiments </li>
+		<li> Give users tools to analyze the results </li>
+		<li> Provide a calculated ideal Ecoplate for maximum voltage output </li>
+	</ul>
 </details>
